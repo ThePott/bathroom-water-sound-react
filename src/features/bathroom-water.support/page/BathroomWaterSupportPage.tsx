@@ -96,9 +96,11 @@ const BathroomWaterSupportPage = () => {
             )
             .then(
                 () => {
+                    event.target.reset()
                     console.log("SUCCESS!")
                 },
                 (error) => {
+                    event.target.reset()
                     console.log("FAILED...", error.text)
                     console.log({ error })
                 },
@@ -117,11 +119,15 @@ const BathroomWaterSupportPage = () => {
                     <div title="vstack" className="flex flex-col gap-[24px]">
                         <h1 className="text-[24px] font-semibold">{translate("app.title")}</h1>
                         <h2 className="font-semibold">{translate("support.title")}</h2>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} ref={formRef}>
                             <div title="vstack" className="flex flex-col gap-[12px]">
-                                <Input placeholder={translate("support.placeholder.name")} />
-                                <Input placeholder={translate("support.placeholder.email")} />
-                                <Textarea placeholder={translate("support.placeholder.content")} rows={6} />
+                                <Input placeholder={translate("support.placeholder.name")} name="userName" />
+                                <Input placeholder={translate("support.placeholder.email")} name="email" />
+                                <Textarea
+                                    placeholder={translate("support.placeholder.content")}
+                                    rows={6}
+                                    name="content"
+                                />
                                 <button className="cursor-pointer transition px-[12px] py-[8px] bg-[#282C33] hover:bg-black text-[#EAEAEA] rounded-[12px]">
                                     {translate("support.button")}
                                 </button>
