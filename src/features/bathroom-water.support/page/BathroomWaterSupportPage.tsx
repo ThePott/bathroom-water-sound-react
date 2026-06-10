@@ -6,7 +6,7 @@ import {
     VITE_EMAIL_PUBLIC_ID,
     VITE_EMAIL_SERVICE_ID,
     VITE_EMAIL_TEMPLATE_ID_ENGLISH,
-    VITE_EMAIL_TEMPLATE_ID_KOREAN,
+    VITE_EMAIL_TEMPLATE_ID_TO_ME,
 } from "../../../shared/config/env-var"
 
 const translations = {
@@ -81,30 +81,22 @@ const BathroomWaterSupportPage = () => {
         return translations[key][isKorean ? "ko" : "en"]
     }
 
-    const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
         setIsModalOn(true)
 
-        emailjs
-            .sendForm(
-                VITE_EMAIL_SERVICE_ID,
-                isKorean ? VITE_EMAIL_TEMPLATE_ID_KOREAN : VITE_EMAIL_TEMPLATE_ID_ENGLISH,
-                formRef.current,
-                {
-                    publicKey: VITE_EMAIL_PUBLIC_ID,
-                },
-            )
-            .then(
-                () => {
-                    event.target.reset()
-                    console.log("SUCCESS!")
-                },
-                (error) => {
-                    event.target.reset()
-                    console.log("FAILED...", error.text)
-                    console.log({ error })
-                },
-            )
+        try {
+            await emailjs.sendForm(VITE_EMAIL_SERVICE_ID, VITE_EMAIL_TEMPLATE_ID_ENGLISH, formRef.current, {
+                publicKey: VITE_EMAIL_PUBLIC_ID,
+            })
+            await emailjs.sendForm(VITE_EMAIL_SERVICE_ID, VITE_EMAIL_TEMPLATE_ID_TO_ME, formRef.current, {
+                publicKey: VITE_EMAIL_PUBLIC_ID,
+            })
+            console.log("---- success")
+            formRef.current.reset()
+        } catch (error) {
+            console.log({ error })
+        }
     }
     return (
         <>
@@ -121,12 +113,12 @@ const BathroomWaterSupportPage = () => {
                         <h2 className="font-semibold">{translate("support.title")}</h2>
                         <form onSubmit={handleSubmit} ref={formRef}>
                             <div title="vstack" className="flex flex-col gap-[12px]">
-                                <Input placeholder={translate("support.placeholder.name")} name="userName" />
+                                <Input placeholder={translate("support.placeholder.name")} name="user_name" />
                                 <Input placeholder={translate("support.placeholder.email")} name="email" />
                                 <Textarea
                                     placeholder={translate("support.placeholder.content")}
                                     rows={6}
-                                    name="content"
+                                    name="message"
                                 />
                                 <button className="cursor-pointer transition px-[12px] py-[8px] bg-[#282C33] hover:bg-black text-[#EAEAEA] rounded-[12px]">
                                     {translate("support.button")}
