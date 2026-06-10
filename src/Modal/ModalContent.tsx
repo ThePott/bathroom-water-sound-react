@@ -8,7 +8,7 @@ const ModalContainer = ({ children }: ModalContentProps) => {
     return (
         <div
             style={{ backdropFilter: "blur(48px)" }}
-            className="w-[400px] mx-auto p-[48px] rounded-[48px] text-center shadow-2xl border-t-2 border-t-white bg-white/70"
+            className="w-[400px] mx-auto p-[48px] rounded-[48px] text-center shadow-2xl border-t-2 border-t-white bg-[#EAEAEA]/60"
         >
             {children}
         </div>
