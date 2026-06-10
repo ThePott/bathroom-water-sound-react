@@ -5,3 +5,21 @@
     color: #1d2021;
     background-color: #eaeaea;
 }
+
+@theme {
+    --font-sans: "MaruBuri", serif;
+}
+
+@font-face {
+    font-family: "MaruBuri";
+    src: url("./assets/font/MaruBuri-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Noto Serif KR";
+    src: url("./assets/font/MaruBuri-SemiBold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+}
