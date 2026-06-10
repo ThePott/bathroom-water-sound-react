@@ -1,6 +1,13 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Modal from "../../../Modal/Modal"
 import { checkIsKorean } from "../../../shared/utiles/detect-language"
+import emailjs from "@emailjs/browser"
+import {
+    VITE_EMAIL_PUBLIC_ID,
+    VITE_EMAIL_SERVICE_ID,
+    VITE_EMAIL_TEMPLATE_ID_ENGLISH,
+    VITE_EMAIL_TEMPLATE_ID_KOREAN,
+} from "../../../shared/config/env-var"
 
 const translations = {
     "app.title": {
@@ -67,6 +74,7 @@ const Textarea = (props: DefaultTextareaProps) => {
 }
 const BathroomWaterSupportPage = () => {
     const [isModalOn, setIsModalOn] = useState(false)
+    const formRef = useRef<HTMLFormElement>(null)
 
     const isKorean = checkIsKorean()
     const translate = (key: string): string => {
@@ -76,6 +84,25 @@ const BathroomWaterSupportPage = () => {
     const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
         setIsModalOn(true)
+
+        emailjs
+            .sendForm(
+                VITE_EMAIL_SERVICE_ID,
+                isKorean ? VITE_EMAIL_TEMPLATE_ID_KOREAN : VITE_EMAIL_TEMPLATE_ID_ENGLISH,
+                formRef.current,
+                {
+                    publicKey: VITE_EMAIL_PUBLIC_ID,
+                },
+            )
+            .then(
+                () => {
+                    console.log("SUCCESS!")
+                },
+                (error) => {
+                    console.log("FAILED...", error.text)
+                    console.log({ error })
+                },
+            )
     }
     return (
         <>
