@@ -3,7 +3,7 @@ import { checkIsKorean } from "../../../shared/utiles/detect-language"
 export const translations = {
     "app.title": {
         ko: "화장실 물소리",
-        en: "Bathroom Water",
+        en: "Tap Water Sound",
     },
     "privacy.title": {
         ko: "개인정보 처리 방침",

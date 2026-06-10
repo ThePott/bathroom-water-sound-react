@@ -12,7 +12,7 @@ import {
 const translations = {
     "app.title": {
         ko: "화장실 물소리",
-        en: "Bathroom Sound",
+        en: "Tap Water Sound",
     },
     "support.title": {
         ko: "문의하기",
