@@ -10,78 +10,78 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BathroomWaterIndexRouteImport } from './routes/bathroom-water.index'
-import { Route as BathroomWaterSupportIndexRouteImport } from './routes/bathroom-water.support.index'
-import { Route as BathroomWaterPrivacyPolicyIndexRouteImport } from './routes/bathroom-water.privacy-policy.index'
+import { Route as TapWaterSoundIndexRouteImport } from './routes/tap-water-sound.index'
+import { Route as TapWaterSoundSupportIndexRouteImport } from './routes/tap-water-sound.support.index'
+import { Route as TapWaterSoundPrivacyPolicyIndexRouteImport } from './routes/tap-water-sound.privacy-policy.index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BathroomWaterIndexRoute = BathroomWaterIndexRouteImport.update({
-  id: '/bathroom-water/',
-  path: '/bathroom-water/',
+const TapWaterSoundIndexRoute = TapWaterSoundIndexRouteImport.update({
+  id: '/tap-water-sound/',
+  path: '/tap-water-sound/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BathroomWaterSupportIndexRoute =
-  BathroomWaterSupportIndexRouteImport.update({
-    id: '/bathroom-water/support/',
-    path: '/bathroom-water/support/',
+const TapWaterSoundSupportIndexRoute =
+  TapWaterSoundSupportIndexRouteImport.update({
+    id: '/tap-water-sound/support/',
+    path: '/tap-water-sound/support/',
     getParentRoute: () => rootRouteImport,
   } as any)
-const BathroomWaterPrivacyPolicyIndexRoute =
-  BathroomWaterPrivacyPolicyIndexRouteImport.update({
-    id: '/bathroom-water/privacy-policy/',
-    path: '/bathroom-water/privacy-policy/',
+const TapWaterSoundPrivacyPolicyIndexRoute =
+  TapWaterSoundPrivacyPolicyIndexRouteImport.update({
+    id: '/tap-water-sound/privacy-policy/',
+    path: '/tap-water-sound/privacy-policy/',
     getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/bathroom-water/': typeof BathroomWaterIndexRoute
-  '/bathroom-water/privacy-policy/': typeof BathroomWaterPrivacyPolicyIndexRoute
-  '/bathroom-water/support/': typeof BathroomWaterSupportIndexRoute
+  '/tap-water-sound/': typeof TapWaterSoundIndexRoute
+  '/tap-water-sound/privacy-policy/': typeof TapWaterSoundPrivacyPolicyIndexRoute
+  '/tap-water-sound/support/': typeof TapWaterSoundSupportIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/bathroom-water': typeof BathroomWaterIndexRoute
-  '/bathroom-water/privacy-policy': typeof BathroomWaterPrivacyPolicyIndexRoute
-  '/bathroom-water/support': typeof BathroomWaterSupportIndexRoute
+  '/tap-water-sound': typeof TapWaterSoundIndexRoute
+  '/tap-water-sound/privacy-policy': typeof TapWaterSoundPrivacyPolicyIndexRoute
+  '/tap-water-sound/support': typeof TapWaterSoundSupportIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/bathroom-water/': typeof BathroomWaterIndexRoute
-  '/bathroom-water/privacy-policy/': typeof BathroomWaterPrivacyPolicyIndexRoute
-  '/bathroom-water/support/': typeof BathroomWaterSupportIndexRoute
+  '/tap-water-sound/': typeof TapWaterSoundIndexRoute
+  '/tap-water-sound/privacy-policy/': typeof TapWaterSoundPrivacyPolicyIndexRoute
+  '/tap-water-sound/support/': typeof TapWaterSoundSupportIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/bathroom-water/'
-    | '/bathroom-water/privacy-policy/'
-    | '/bathroom-water/support/'
+    | '/tap-water-sound/'
+    | '/tap-water-sound/privacy-policy/'
+    | '/tap-water-sound/support/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/bathroom-water'
-    | '/bathroom-water/privacy-policy'
-    | '/bathroom-water/support'
+    | '/tap-water-sound'
+    | '/tap-water-sound/privacy-policy'
+    | '/tap-water-sound/support'
   id:
     | '__root__'
     | '/'
-    | '/bathroom-water/'
-    | '/bathroom-water/privacy-policy/'
-    | '/bathroom-water/support/'
+    | '/tap-water-sound/'
+    | '/tap-water-sound/privacy-policy/'
+    | '/tap-water-sound/support/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BathroomWaterIndexRoute: typeof BathroomWaterIndexRoute
-  BathroomWaterPrivacyPolicyIndexRoute: typeof BathroomWaterPrivacyPolicyIndexRoute
-  BathroomWaterSupportIndexRoute: typeof BathroomWaterSupportIndexRoute
+  TapWaterSoundIndexRoute: typeof TapWaterSoundIndexRoute
+  TapWaterSoundPrivacyPolicyIndexRoute: typeof TapWaterSoundPrivacyPolicyIndexRoute
+  TapWaterSoundSupportIndexRoute: typeof TapWaterSoundSupportIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -93,25 +93,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bathroom-water/': {
-      id: '/bathroom-water/'
-      path: '/bathroom-water'
-      fullPath: '/bathroom-water/'
-      preLoaderRoute: typeof BathroomWaterIndexRouteImport
+    '/tap-water-sound/': {
+      id: '/tap-water-sound/'
+      path: '/tap-water-sound'
+      fullPath: '/tap-water-sound/'
+      preLoaderRoute: typeof TapWaterSoundIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bathroom-water/support/': {
-      id: '/bathroom-water/support/'
-      path: '/bathroom-water/support'
-      fullPath: '/bathroom-water/support/'
-      preLoaderRoute: typeof BathroomWaterSupportIndexRouteImport
+    '/tap-water-sound/support/': {
+      id: '/tap-water-sound/support/'
+      path: '/tap-water-sound/support'
+      fullPath: '/tap-water-sound/support/'
+      preLoaderRoute: typeof TapWaterSoundSupportIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bathroom-water/privacy-policy/': {
-      id: '/bathroom-water/privacy-policy/'
-      path: '/bathroom-water/privacy-policy'
-      fullPath: '/bathroom-water/privacy-policy/'
-      preLoaderRoute: typeof BathroomWaterPrivacyPolicyIndexRouteImport
+    '/tap-water-sound/privacy-policy/': {
+      id: '/tap-water-sound/privacy-policy/'
+      path: '/tap-water-sound/privacy-policy'
+      fullPath: '/tap-water-sound/privacy-policy/'
+      preLoaderRoute: typeof TapWaterSoundPrivacyPolicyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -119,9 +119,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BathroomWaterIndexRoute: BathroomWaterIndexRoute,
-  BathroomWaterPrivacyPolicyIndexRoute: BathroomWaterPrivacyPolicyIndexRoute,
-  BathroomWaterSupportIndexRoute: BathroomWaterSupportIndexRoute,
+  TapWaterSoundIndexRoute: TapWaterSoundIndexRoute,
+  TapWaterSoundPrivacyPolicyIndexRoute: TapWaterSoundPrivacyPolicyIndexRoute,
+  TapWaterSoundSupportIndexRoute: TapWaterSoundSupportIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
