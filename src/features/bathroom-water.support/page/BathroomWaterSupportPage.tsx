@@ -77,7 +77,7 @@ const BathroomWaterSupportPage = () => {
     const formRef = useRef<HTMLFormElement>(null)
 
     const isKorean = checkIsKorean()
-    const translate = (key: string): string => {
+    const translate = (key: keyof typeof translations): string => {
         return translations[key][isKorean ? "ko" : "en"]
     }
 
@@ -85,6 +85,7 @@ const BathroomWaterSupportPage = () => {
         event.preventDefault()
         setIsModalOn(true)
 
+        if (!formRef.current) return
         try {
             await emailjs.sendForm(VITE_EMAIL_SERVICE_ID, VITE_EMAIL_TEMPLATE_ID_ENGLISH, formRef.current, {
                 publicKey: VITE_EMAIL_PUBLIC_ID,

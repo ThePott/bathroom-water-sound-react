@@ -37,7 +37,7 @@ export const translations = {
 
 const BathroomWaterPrivacyPolicyPage = () => {
     const isKorean = checkIsKorean()
-    const translate = (key: string): string => {
+    const translate = (key: keyof typeof translations): string => {
         return translations[key][isKorean ? "ko" : "en"]
     }
 
